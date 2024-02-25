@@ -1,0 +1,17 @@
+name: frontend trigger
+
+on:
+  push:
+    paths: 'frontend/**'
+      
+jobs:
+  deploy:
+    name: "Deploy Frontend Container"
+    runs-on: self-hosted
+    steps:
+      - name: checkout workspace
+        uses: actions/checkout@v3
+
+      - name: run cicd script
+        run: bash cicd.sh frontend frontend_image frontend_container 8080
+
