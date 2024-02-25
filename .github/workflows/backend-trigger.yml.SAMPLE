@@ -1,0 +1,16 @@
+name: backend trigger
+
+on:
+  push:
+    paths: 'backend/**'
+
+jobs:
+  deploy:
+    name: "Deploy Backend Container"
+    runs-on: self-hosted
+    steps:
+      - name: checkout workspace
+        uses: actions/checkout@v3
+
+      - name: run cicd script
+        run: bash cicd.sh backend backend_image backend_container 3000
