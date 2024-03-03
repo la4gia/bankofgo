@@ -13,5 +13,5 @@ jobs:
         uses: actions/checkout@v3
 
       - name: run cicd script
-        run: bash cicd.sh frontend frontend_image frontend_container 8080
+        run: bash cicd.sh frontend frontend_image frontend_container 8080 10.10.10.10
 
