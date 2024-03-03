@@ -13,4 +13,4 @@ if [[ $(docker ps | grep $2) ]]
         echo "no image detected"
 fi
 cd $1 && docker build -t $2 .
-docker run -d --rm --name $3 -p $4:$4 $2
+docker run -d --rm --name $3 --network bog-network --ip $5 -p $4:$4 $2
