@@ -11,11 +11,13 @@ import (
 
 type APIServer struct {
 	listenAddr string
+	database   Storage
 }
 
-func newAPIServer(listeningAddr string) *APIServer {
+func newAPIServer(listeningAddr string, store Storage) *APIServer {
 	return &APIServer{
 		listenAddr: listeningAddr,
+		database:   store,
 	}
 }
 
@@ -37,8 +39,9 @@ func (s *APIServer) handleAccount(w http.ResponseWriter, r *http.Request) error 
 		}
 
 		account := NewAccount(createReq.FirstName, createReq.LastName)
-
-		log.Println("account created: ", account)
+		if err := s.database.CreateAccount(account); err != nil {
+			return err
+		}
 
 		return WriteJSON(w, http.StatusOK, account)
 

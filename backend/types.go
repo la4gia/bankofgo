@@ -1,6 +1,8 @@
 package main
 
-import "time"
+import (
+	"time"
+)
 
 type CreateAccountRequest struct {
 	FirstName string `json:"first_name"`
