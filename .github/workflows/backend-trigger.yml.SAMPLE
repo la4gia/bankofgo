@@ -13,4 +13,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: run cicd script
-        run: bash cicd.sh backend backend_image backend_container 3000
+        run: bash cicd.sh backend backend_image backend_container 3000 10.10.10.20
