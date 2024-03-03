@@ -44,7 +44,7 @@ func submitForm(w http.ResponseWriter, r *http.Request) {
 	bodyReader := bytes.NewReader(jsonBody)
 
 	// SUBMIT TO BACKEND API
-	requestURL := fmt.Sprintf("http://localhost:%d/api/v1/create", 3000)
+	requestURL := fmt.Sprintf("http://10.10.10.20:%d/api/v1/create", 3000)
 	resp, err := http.Post(requestURL, "applicaton/json", bodyReader)
 	if err != nil {
 		log.Fatal(err)
